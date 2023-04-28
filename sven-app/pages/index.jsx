@@ -39,9 +39,10 @@ export default function TaskPage() {
   //   app.use(bodyParser.json());
   //   app.use(cors());
 
-    // Generate summary
-   const SummaryButton = ({ taskList }) => {
-  const [summary, setSummary] = useState(null);}
+  // Generate summary
+  const SummaryButton = ({ taskList }) => {
+    const [summary, setSummary] = useState(null);
+  }
 
   const generateSummary = async () => {
     const prompt = `Summarize the user's task list:\n\n${taskList.map(task => `- ${task.name}\n`).join('')}`;
@@ -72,12 +73,11 @@ export default function TaskPage() {
         .sort((a, b) => moment(a.addedTime).diff(moment(b.addedTime)))
         .slice(0, 3)
     );
-  }, [taskList]);  
+  }, [taskList]);
 
   return (
-    <div className="w-full">
-      <h1 className="font-bold ml-10">Clarity,</h1>
-      <sub className="mx-10 my-10 font-semibold ml-20 italic" >smart AI task assistant</sub>
+    <div className="w-full mx-auto container">
+      <div className="font-black text-lg mt-2">Clarity, <span className="text-xs font-medium italic text-gray-700">smart AI task assistant</span></div>
       <br />
       <div className="float-left w-1/2">
         <form onSubmit={addTask}>
@@ -90,7 +90,7 @@ export default function TaskPage() {
             className="mx-12 px-3 py-2 border-2 border-black rounded-md shadow-md"
             required
           />
-          <button type="submit" className="hover:bg-green-700 rounded p-1">
+          <button type="submit" className="border-2 border-black hover:bg-green-600 hover:text-white rounded px-3 py-1">
             Add Task
           </button>
         </form>
@@ -137,5 +137,5 @@ export default function TaskPage() {
         )}
       </div>
     </div>
-  );  
-    } 
+  );
+} 
