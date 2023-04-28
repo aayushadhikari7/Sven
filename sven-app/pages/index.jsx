@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
 import moment from 'moment';
 import useLocalStorage from 'use-local-storage-state';
-import openai, { Configuration } from 'openai';
+const { Configuration, OpenAIApi } = require("openai");
 
-// openai.apiKey = process.env.REACT_APP_OPENAI_API_KEY;
-// const config = new Configuration({
-//   apiKey: openai.apiKey,
-// });
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+const openai = new OpenAIApi(configuration);
 
-// const openaiApi = new openai(config);
 
 export default function TaskPage() {
   const [taskList, setTaskList] = useState([]);
